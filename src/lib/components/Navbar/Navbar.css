@@ -1,0 +1,36 @@
+:global(body) {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.navbar,
+.nav-link,
+h1,
+a,
+button {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.nav-hover-effect {
+	position: relative;
+	transition: opacity 0.3s ease;
+}
+
+.nav-hover-effect:hover {
+	opacity: 1 !important;
+}
+
+.nav-hover-effect::after {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 2px;
+	bottom: 0;
+	left: 50%;
+	background-color: black;
+	transition: all 0.3s ease;
+	transform: translateX(-50%);
+}
+
+.nav-hover-effect:hover::after {
+	width: 100%;
+}

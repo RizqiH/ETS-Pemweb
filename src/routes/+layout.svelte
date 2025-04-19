@@ -1,9 +1,9 @@
 <script lang="ts">
 	import '../app.css';
 	import 'bootstrap/dist/css/bootstrap.min.css';
-
-	import Navbar from '../components/Navbar/Navbar.svelte';
-	import Hero from '../components/Hero/Hero.svelte';
+	import Navbar from '../lib/components/Navbar/Navbar.svelte';
+	import Footer from '$lib/components/Footer/Footer.svelte';
+	let { children } = $props();
 </script>
 
 <svelte:head>
@@ -16,6 +16,8 @@
 </svelte:head>
 
 <Navbar />
-<Hero />
+<main class="flex-grow">
+	{@render children()}
+</main>
 
-<slot />
+<Footer />

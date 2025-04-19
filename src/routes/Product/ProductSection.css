@@ -1,0 +1,128 @@
+.products-section {
+	overflow: hidden;
+}
+
+.product-carousel {
+	width: 100%;
+	overflow: hidden;
+}
+
+.carousel-track {
+	display: flex;
+	transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Improved easing for smoother transition */
+	width: 100%;
+}
+
+.carousel-slide {
+	flex: 0 0 100%;
+	width: 100%;
+}
+
+/* External Navigation Arrows */
+.carousel-nav-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+	border: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	z-index: 100;
+	transition:
+		opacity 0.3s ease,
+		background-color 0.3s ease;
+	opacity: 0;
+}
+
+.products-section:hover .carousel-nav-arrow {
+	opacity: 1;
+}
+
+.carousel-nav-arrow:hover {
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-nav-prev {
+	left: 10px;
+}
+
+.carousel-nav-next {
+	right: 10px;
+}
+
+/* Product Cards */
+.product-image-container {
+	background-color: #f7f7f7;
+	overflow: hidden;
+}
+
+.square-container {
+	position: relative;
+	width: 100%;
+	padding-top: 100%; /* Creates a square container */
+}
+
+.image-slider {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.slider-track {
+	transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Better easing */
+	width: 300%; /* Three images side by side */
+}
+
+.slider-item {
+	width: 33.333%;
+}
+
+/* Slide Indicators */
+.slide-indicators {
+	bottom: 10px;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.product-image-container:hover .slide-indicators {
+	opacity: 1;
+}
+
+.dot-indicator {
+	width: 8px;
+	height: 8px;
+	padding: 0;
+	opacity: 0.5;
+	transition: opacity 0.3s ease;
+}
+
+.dot-indicator.active {
+	opacity: 1;
+}
+
+/* Product Info */
+.product-title {
+	font-size: 14px;
+}
+
+.size-btn {
+	min-width: 40px;
+	font-size: 12px;
+	padding: 2px 4px;
+}
+
+@media (max-width: 768px) {
+	.size-btn {
+		min-width: 35px;
+		font-size: 11px;
+	}
+}

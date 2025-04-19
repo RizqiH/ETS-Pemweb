@@ -4,8 +4,7 @@
 	const menuItems = [
 		{ name: 'Shop', link: '/shop' },
 		{ name: 'Category', link: '/category' },
-		{ name: 'About', link: '#yk-move' },
-		{ name: 'BUNDLES', link: '#bundles' }
+		{ name: 'About', link: '/about' },
 	];
 </script>
 

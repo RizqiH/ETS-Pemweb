@@ -11,6 +11,7 @@
 		image: string | null;
 		sizes: string[];
 		availableSizes: string[];
+		category: string[];
 	}
 
 	interface Product {
@@ -20,15 +21,17 @@
 		image: string | null; // Changed to allow null values
 		sizes: string[];
 		availableSizes: string[];
+		category: string[];
 	}
 
 	interface NewProduct {
-		name: string;
-		price: string | number;
-		image: string | null;
-		sizes: string[];
-		availableSizes: string[];
-	}
+  name: string;
+  price: string | number;
+  image: string | null;
+  sizes: string[];
+  availableSizes: string[];
+  category: string[]; // Add this line
+}
 
 	let loading = true;
 	let errorMessage = '';
@@ -38,7 +41,8 @@
 		price: '',
 		image: null,
 		sizes: [],
-		availableSizes: []
+		availableSizes: [],
+		category: []
 	};
 
 	let showModal = false;
@@ -88,24 +92,23 @@
 	}
 
 	async function handleImageChange(event: Event): Promise<void> {
-  const target = event.target as HTMLInputElement;
-  if (target && target.files && target.files.length > 0) {
-    const file = target.files[0];
-    if (file) {
-      try {
-        console.log("Mulai upload gambar...");
-        // Upload gambar ke Cloudinary dan dapatkan URL-nya
-        const imageUrl = await uploadImage(file);
-        console.log("Upload gambar berhasil:", imageUrl); // Pastikan URL yang valid dikembalikan
-        newProduct.image = imageUrl; // Simpan URL gambar Cloudinary
-      } catch (error) {
-        console.error("Error uploading image:", error);
-        alert("Terjadi kesalahan saat mengupload gambar.");
-      }
-    }
-  }
-}
-
+		const target = event.target as HTMLInputElement;
+		if (target && target.files && target.files.length > 0) {
+			const file = target.files[0];
+			if (file) {
+				try {
+					console.log('Mulai upload gambar...');
+					// Upload gambar ke Cloudinary dan dapatkan URL-nya
+					const imageUrl = await uploadImage(file);
+					console.log('Upload gambar berhasil:', imageUrl); // Pastikan URL yang valid dikembalikan
+					newProduct.image = imageUrl; // Simpan URL gambar Cloudinary
+				} catch (error) {
+					console.error('Error uploading image:', error);
+					alert('Terjadi kesalahan saat mengupload gambar.');
+				}
+			}
+		}
+	}
 
 	async function handleSubmit(event: Event): Promise<void> {
 		event.preventDefault();
@@ -121,13 +124,14 @@
 			price: parseFloat(newProduct.price as string),
 			image: newProduct.image, // Gambar sudah valid, simpan URL Cloudinary
 			sizes: [...newProduct.sizes],
-			availableSizes: [...newProduct.availableSizes]
+			availableSizes: [...newProduct.availableSizes],
+			category: [...newProduct.category]
 		};
 
 		try {
 			const productId = await saveProduct(newProductItem);
 			productList = [...productList, { ...newProductItem, id: productId }];
-			newProduct = { name: '', price: '', image: null, sizes: [], availableSizes: [] };
+			newProduct = { name: '', price: '', image: null, sizes: [], availableSizes: [], category: [] };
 			toggleModal();
 			showSuccessMessage = true;
 			setTimeout(() => {
@@ -317,6 +321,27 @@
 								required
 							/>
 						</div>
+						<div class="mb-3">
+							<label for="category" class="form-label">Kategori</label>
+							<div class="d-flex gap-2" id="category">
+							  {#each ['Hoodie', 'Sweatshirt'] as category}
+								<button
+								  type="button"
+								  class="btn btn-sm {newProduct.category.includes(category)
+									? 'btn-dark'
+									: 'btn-outline-dark'}"
+								  on:click={() => {
+									if (newProduct.category.includes(category)) {
+									  newProduct.category = newProduct.category.filter((c) => c !== category);
+									} else {
+									  newProduct.category = [...newProduct.category, category];
+									}
+								  }}
+								>
+								  {category}
+								</button>
+							  {/each}
+							</div>
 						<div class="mb-3">
 							<label for="sizes" class="form-label">Pilih Ukuran</label>
 							<div class="d-flex gap-2" id="sizes">

@@ -408,7 +408,7 @@
 
 	.carousel-nav-arrow {
 		background: rgba(255, 255, 255, 0.8);
-		border: 1px solid #e0e0e0;
+		border: 1px solid #8f8c8c;
 		border-radius: 50%;
 		width: 36px;
 		height: 36px;
@@ -421,7 +421,7 @@
 	}
 
 	.carousel-nav-arrow:hover {
-		background: rgba(240, 240, 240, 1);
+		background: rgb(0, 0, 0);
 	}
 
 	.arrow-icon {

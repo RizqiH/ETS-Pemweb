@@ -83,7 +83,7 @@ const getProducts = async (): Promise<StoredProduct[]> => {
 				image: data.image,
 				sizes: data.sizes || [],
 				availableSizes: data.availableSizes || [],
-				category:data.category || []
+				category: data.category || []
 			});
 		});
 

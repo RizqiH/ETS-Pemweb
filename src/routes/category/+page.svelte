@@ -23,7 +23,7 @@
 	let loading = true;
 	let errorMessage = '';
 	let productList: Product[] = [];
-	
+
 	let filters = {
 		priceRange: 'all',
 		color: 'all',
@@ -46,8 +46,10 @@
 	}
 
 	function filterProducts() {
-		return productList.filter(product => 
-			product.category && product.category.includes('Hoodie') || product.category.includes('Sweatshirt')
+		return productList.filter(
+			(product) =>
+				(product.category && product.category.includes('Hoodie')) ||
+				product.category.includes('Sweatshirt')
 		);
 	}
 
@@ -81,8 +83,7 @@
 	<section class="border-bottom py-4">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4">
-				</div>
+				<div class="col-md-4"></div>
 				<div class="col-md-4">
 					<select class="form-select" bind:value={filters.sortBy}>
 						<option value="newest">Sort by: Newest</option>
@@ -115,9 +116,9 @@
 						<div class="col-md-3 col-6 mb-4">
 							<a href="/product/{product.id}" class="text-decoration-none text-dark product-card">
 								<div class="product-image-container mb-3">
-									<img 
-										src={product.image || 'https://dummyimage.com/400x400/eee/999&text=No+Image'} 
-										alt={product.name} 
+									<img
+										src={product.image || 'https://dummyimage.com/400x400/eee/999&text=No+Image'}
+										alt={product.name}
 										class="product-image w-100"
 										on:error={(e) => {
 											const target = e.target as HTMLImageElement;
@@ -132,7 +133,10 @@
 								<div class="d-flex flex-wrap">
 									{#each product.sizes || [] as size}
 										<div
-											class="size-indicator me-1 mb-1 {isSizeAvailable(product.availableSizes || [], size)
+											class="size-indicator me-1 mb-1 {isSizeAvailable(
+												product.availableSizes || [],
+												size
+											)
 												? 'available'
 												: 'unavailable'}"
 										>

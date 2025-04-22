@@ -4,7 +4,7 @@
 	const menuItems = [
 		{ name: 'Shop', link: '/shop' },
 		{ name: 'Category', link: '/category' },
-		{ name: 'About', link: '/about' },
+		{ name: 'About', link: '/about' }
 	];
 </script>
 

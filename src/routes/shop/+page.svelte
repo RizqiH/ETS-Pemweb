@@ -25,13 +25,13 @@
 	}
 
 	interface NewProduct {
-  name: string;
-  price: string | number;
-  image: string | null;
-  sizes: string[];
-  availableSizes: string[];
-  category: string[]; // Add this line
-}
+		name: string;
+		price: string | number;
+		image: string | null;
+		sizes: string[];
+		availableSizes: string[];
+		category: string[]; // Add this line
+	}
 
 	let loading = true;
 	let errorMessage = '';
@@ -131,7 +131,14 @@
 		try {
 			const productId = await saveProduct(newProductItem);
 			productList = [...productList, { ...newProductItem, id: productId }];
-			newProduct = { name: '', price: '', image: null, sizes: [], availableSizes: [], category: [] };
+			newProduct = {
+				name: '',
+				price: '',
+				image: null,
+				sizes: [],
+				availableSizes: [],
+				category: []
+			};
 			toggleModal();
 			showSuccessMessage = true;
 			setTimeout(() => {
@@ -324,71 +331,72 @@
 						<div class="mb-3">
 							<label for="category" class="form-label">Kategori</label>
 							<div class="d-flex gap-2" id="category">
-							  {#each ['Hoodie', 'Sweatshirt'] as category}
-								<button
-								  type="button"
-								  class="btn btn-sm {newProduct.category.includes(category)
-									? 'btn-dark'
-									: 'btn-outline-dark'}"
-								  on:click={() => {
-									if (newProduct.category.includes(category)) {
-									  newProduct.category = newProduct.category.filter((c) => c !== category);
-									} else {
-									  newProduct.category = [...newProduct.category, category];
-									}
-								  }}
-								>
-								  {category}
-								</button>
-							  {/each}
-							</div>
-						<div class="mb-3">
-							<label for="sizes" class="form-label">Pilih Ukuran</label>
-							<div class="d-flex gap-2" id="sizes">
-								{#each ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'] as size}
+								{#each ['Hoodie', 'Sweatshirt'] as category}
 									<button
 										type="button"
-										class="btn btn-sm {newProduct.sizes.includes(size)
+										class="btn btn-sm {newProduct.category.includes(category)
 											? 'btn-dark'
 											: 'btn-outline-dark'}"
 										on:click={() => {
-											if (newProduct.sizes.includes(size)) {
-												newProduct.sizes = newProduct.sizes.filter((s) => s !== size);
+											if (newProduct.category.includes(category)) {
+												newProduct.category = newProduct.category.filter((c) => c !== category);
 											} else {
-												newProduct.sizes = [...newProduct.sizes, size];
+												newProduct.category = [...newProduct.category, category];
 											}
 										}}
 									>
-										{size}
+										{category}
 									</button>
 								{/each}
 							</div>
-						</div>
-						<div class="mb-3">
-							<label for="availableSizes" class="form-label">Ukuran Tersedia</label>
-							<div class="d-flex gap-2" id="availableSizes">
-								{#each ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'] as size}
-									<button
-										type="button"
-										class="btn btn-sm {newProduct.availableSizes.includes(size)
-											? 'btn-dark'
-											: 'btn-outline-dark'}"
-										on:click={() => {
-											if (newProduct.availableSizes.includes(size)) {
-												newProduct.availableSizes = newProduct.availableSizes.filter(
-													(s) => s !== size
-												);
-											} else {
-												newProduct.availableSizes = [...newProduct.availableSizes, size];
-											}
-										}}
-									>
-										{size}
-									</button>
-								{/each}
+							<div class="mb-3">
+								<label for="sizes" class="form-label">Pilih Ukuran</label>
+								<div class="d-flex gap-2" id="sizes">
+									{#each ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'] as size}
+										<button
+											type="button"
+											class="btn btn-sm {newProduct.sizes.includes(size)
+												? 'btn-dark'
+												: 'btn-outline-dark'}"
+											on:click={() => {
+												if (newProduct.sizes.includes(size)) {
+													newProduct.sizes = newProduct.sizes.filter((s) => s !== size);
+												} else {
+													newProduct.sizes = [...newProduct.sizes, size];
+												}
+											}}
+										>
+											{size}
+										</button>
+									{/each}
+								</div>
 							</div>
+							<div class="mb-3">
+								<label for="availableSizes" class="form-label">Ukuran Tersedia</label>
+								<div class="d-flex gap-2" id="availableSizes">
+									{#each ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'] as size}
+										<button
+											type="button"
+											class="btn btn-sm {newProduct.availableSizes.includes(size)
+												? 'btn-dark'
+												: 'btn-outline-dark'}"
+											on:click={() => {
+												if (newProduct.availableSizes.includes(size)) {
+													newProduct.availableSizes = newProduct.availableSizes.filter(
+														(s) => s !== size
+													);
+												} else {
+													newProduct.availableSizes = [...newProduct.availableSizes, size];
+												}
+											}}
+										>
+											{size}
+										</button>
+									{/each}
+								</div>
+							</div>
+							<button type="submit" class="btn btn-primary">Tambah Produk</button>
 						</div>
-						<button type="submit" class="btn btn-primary">Tambah Produk</button>
 					</form>
 				</div>
 			</div>

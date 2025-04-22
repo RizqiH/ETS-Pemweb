@@ -3,7 +3,11 @@
 		<!-- Left Section -->
 		<div>
 			<p class="text-sm leading-relaxed text-gray-600">
-				Sejak 2017, Hurts-Spaces telah berkembang menjadi sebuah produk UMKM yang tidak hanya menawarkan hoodie dan sweatshirt berkualitas tinggi, tetapi juga menciptakan ruang bagi para pencinta fashion untuk mengekspresikan diri mereka. Menggabungkan desain kontemporer dengan kenyamanan, setiap produk Hurts-Spaces diciptakan untuk menghadirkan gaya yang dinamis dan fleksibel, siap mendampingi berbagai momen kehidupan. 	
+				Sejak 2017, Hurts-Spaces telah berkembang menjadi sebuah produk UMKM yang tidak hanya
+				menawarkan hoodie dan sweatshirt berkualitas tinggi, tetapi juga menciptakan ruang bagi para
+				pencinta fashion untuk mengekspresikan diri mereka. Menggabungkan desain kontemporer dengan
+				kenyamanan, setiap produk Hurts-Spaces diciptakan untuk menghadirkan gaya yang dinamis dan
+				fleksibel, siap mendampingi berbagai momen kehidupan.
 			</p>
 		</div>
 
@@ -17,5 +21,6 @@
 	</div>
 
 	<div class="mt-8 w-full bg-gray-100 py-4 text-center text-sm text-gray-500">
-		Copyright © Hurts-Spaces | 2017 – 2025 | Code with Rizqi Amanan</div>
+		Copyright © Hurts-Spaces | 2017 – 2025 | Code with Rizqi Amanan
+	</div>
 </footer>
